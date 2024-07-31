@@ -1,0 +1,28 @@
+body {
+    background-color: #f4f4f4; /* Light grey background or any color you prefer */
+    color: #ffffff; /* Dark grey text for better readability */
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .section {
+    padding: 100px 20px;
+    margin: 20px 0;
+  }
+  
+  .horizontalScroll {
+    display: flex;
+    overflow-x: auto;
+  }
+  
+  .horizontalScroll > div {
+    flex: 0 0 auto;
+    margin-right: 20px;
+  }
+  

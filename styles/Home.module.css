@@ -1,0 +1,110 @@
+.section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .threeDContainer {
+    width: 100%;
+    height: 400px;
+  }
+  
+  .blogGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  .blogCard {
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 8px;
+    color: #1E1E1E;
+    transition: transform 0.2s;
+  }
+  
+  .blogCard:hover {
+    transform: scale(1.05);
+  }
+  
+  .aboutContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .profilePic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .changingImage img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .experience, .projects {
+    margin-bottom: 40px;
+  }
+  
+  .experienceCard, .projectCard {
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 8px;
+    min-width: 300px;
+    color: #1E1E1E;
+  }
+  
+  .projectCard img {
+    width: 100%;
+    border-radius: 8px;
+  }
+  
+  .searchBar {
+    display: block;
+    width: 50%;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: #fff;
+    color: #131313;
+    border: none;
+  }
+  
+  .twoColumnLayout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .columnText, .columnModel {
+    flex: 1;
+  }
+  
+  .columnModel {
+    height: 500px; /* Adjust height accordingly */
+  }
+
+  /* Custom scrollbar */
+.scrollbar {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 5px;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.scrollbar-thumb {
+  position: absolute;
+  top: 0;
+  width: 5px;
+  background: blue;
+  height: 0;
+  transition: height 0.3s ease-out;
+}

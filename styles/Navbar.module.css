@@ -1,0 +1,32 @@
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    background-color: #FFFFFF;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .navContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Lexend Deca', sans-serif;
+    color: #1E1E1E;
+  }
+  
+  .navLinks a {
+    margin-left: 20px;
+    cursor: pointer;
+    color: #1E1E1E;
+  }
+  

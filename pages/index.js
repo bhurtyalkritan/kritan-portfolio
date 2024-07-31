@@ -47,24 +47,24 @@ function Mars() {
 }
 
 const cardData = [
-  { title: 'Gene Editing', image: '/gene-editing.jpg' },
-  { title: 'Bioinformatics', image: '/bioinformatics.jpg' },
-  { title: 'Synthetic Biology', image: '/synthetic-biology.jpg' },
+  { title: 'Neural Networks', image: '/neural-network.jpg' },
+  { title: 'Data Analysis', image: '/data-analysis.jpg' },
+  { title: 'Neuroscience', image: '/gene-editing.jpg' },
 ];
 
 const roadmap = [
-  { date: 'Q1 2024', title: 'Launch Blog' },
-  { date: 'Q2 2024', title: 'First Research Publication' },
-  { date: 'Q3 2024', title: 'Collaborate with BioTech Labs' },
-  { date: 'Q4 2024', title: 'Release Bioinformatics Tool' },
+  { date: 'August 10 2024', title: 'Launch Blog' },
+  { date: 'Decemember 2024', title: 'First Research Publication' },
+  { date: 'January 2025', title: 'Complete Appstractify' },
+  { date: 'May 2025', title: 'Release Bioinformatics Tool' },
   // Add more roadmap items
 ];
 
 const aboutImages = ['/about-images/about-image1.jpg','/about-images/about-image2.jpg','/about-images/about-image3.jpg'];
 
 const experiences = [
-  { title: 'Undergrad Research Assistant', company: 'UNC Medical School fMRI Neuroscience Lab', duration: 'June 2024 - Present' },
-  { title: 'Product Management Intern', company: 'Lenovo', duration: 'June 2024 - July 2024' },
+  { title: 'UG Research Assistant', company: 'UNC Medical School fMRI Neuroscience Lab', duration: 'June 2024 - Present' },
+  { title: 'PM Intern', company: 'Lenovo', duration: 'June 2024 - July 2024' },
   { title: 'Backend Software Engineer', company: 'App Team Carolina', duration: 'Feb 2024 - Present' },
   { title: 'Software Engineer Intern', company: 'Amtev', duration: 'May 2023 - Aug 2023' }
   // Add more experiences
@@ -108,10 +108,10 @@ const Home = () => {
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 8 }}>
         <Box sx={{ flex: 1, pr: 4 }}>
           <Typography variant="h2" component="h1" gutterBottom>
-            Welcome to the Biotech Blog
+            Welcome to my page
           </Typography>
           <Typography variant="h5" paragraph>
-            This blog explores the latest advancements in biotechnology, featuring articles on cutting-edge research, innovative technologies, and insights from industry experts. Stay tuned for exciting updates and deep dives into the world of biotech!
+            This is a personal website to showcase my work and interests in biotechnology and computer science. As well as give my own insights and opinions on emerging technologies.
           </Typography>
         </Box>
         <Box sx={{ flex: 1, height: 400 }}>
@@ -173,7 +173,7 @@ const Home = () => {
                 />
                 <Typography variant="h5" gutterBottom>Kritan Bhurtyal</Typography>
                 <Typography variant="body1" paragraph>
-                  Passionate about biotechnology and its potential to change the world...
+                 I am passionate about making a change with technology. I am mainly interested in the intersection between technology and medicine.
                 </Typography>
               </CardContent>
             </Card>
@@ -328,4 +328,3 @@ const Home = () => {
 };
 
 export default Home;
-

@@ -9,7 +9,7 @@ const Navbar = () => {
     <AppBar position="static" sx={{ width: '70%', margin: '20px auto', borderRadius: '15px', bgcolor: 'white' }}>
       <Toolbar sx={{ justifyContent: 'space-between' }}>
         <Typography variant="h6" component="div" sx={{ color: 'black' }}>
-          Biotech Blog
+          Kritan Bhurtyal
         </Typography>
         <Box>
           <Button color="inherit" sx={{ color: 'black' }} href="#blogs">Blogs</Button>

@@ -63,14 +63,23 @@ const roadmap = [
 const aboutImages = ['/about-images/about-image1.jpg','/about-images/about-image2.jpg','/about-images/about-image3.jpg'];
 
 const experiences = [
-  { title: 'Research Assistant', company: 'BioTech Lab', duration: '2019-2021' },
-  { title: 'Intern', company: 'GeneTech', duration: '2018' },
+  { title: 'Undergrad Research Assistant', company: 'UNC Medical School fMRI Neuroscience Lab', duration: 'June 2024 - Present' },
+  { title: 'Product Management Intern', company: 'Lenovo', duration: 'June 2024 - July 2024' },
+  { title: 'Backend Software Engineer', company: 'App Team Carolina', duration: 'Feb 2024 - Present' },
+  { title: 'Software Engineer Intern', company: 'Amtev', duration: 'May 2023 - Aug 2023' }
   // Add more experiences
 ];
 
 const projects = [
-  { title: 'CRISPR Gene Editing', description: 'Worked on...' },
-  { title: 'Bioinformatics Tool', description: 'Developed...' },
+  { title: 'Appstractify', description: 'Worked on...' },
+  { title: 'Brain Analysis', description: 'Developed...' },
+  { title: 'RemoteEyeMouse', description: 'Worked on...' },
+  { title: 'Fema Data Research', description: 'Developed...' },
+  { title: 'MixNMath', description: 'Worked on...' },
+  { title: 'TerminalBankingSystem', description: 'Developed...' },
+  { title: 'SolarSystemSimulation', description: 'Worked on...' },
+  { title: 'PlanetaryGravity', description: 'Developed...' },
+  
   // Add more projects
 ];
 
@@ -319,3 +328,4 @@ const Home = () => {
 };
 
 export default Home;
+

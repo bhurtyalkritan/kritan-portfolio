@@ -51,6 +51,9 @@ const cardData = [
   { title: 'Neural Networks', image: '/neural-network.jpg' },
   { title: 'Data Analysis', image: '/data-analysis.jpg' },
   { title: 'Neuroscience', image: '/gene-editing.jpg' },
+  { title: 'Neural Networks', image: '/neural-network.jpg' },
+  { title: 'Data Analysis', image: '/data-analysis.jpg' },
+  { title: 'Neuroscience', image: '/gene-editing.jpg' },
 ];
 
 const roadmap = [
@@ -64,6 +67,10 @@ const roadmap = [
 const aboutImages = ['/about-images/about-image1.jpg', '/about-images/about-image2.jpg', '/about-images/about-image3.jpg'];
 
 const experiences = [
+  { title: 'UG Research Assistant', company: 'UNC Medical School fMRI Neuroscience Lab', duration: 'June 2024 - Present' },
+  { title: 'PM Intern', company: 'Lenovo', duration: 'June 2024 - July 2024' },
+  { title: 'Backend Software Engineer', company: 'App Team Carolina', duration: 'Feb 2024 - Present' },
+  { title: 'Software Engineer Intern', company: 'Amtev', duration: 'May 2023 - Aug 2023' }
   { title: 'UG Research Assistant', company: 'UNC Medical School fMRI Neuroscience Lab', duration: 'June 2024 - Present' },
   { title: 'PM Intern', company: 'Lenovo', duration: 'June 2024 - July 2024' },
   { title: 'Backend Software Engineer', company: 'App Team Carolina', duration: 'Feb 2024 - Present' },
@@ -109,8 +116,10 @@ const Home = () => {
         <Box sx={{ flex: 1, pr: 4 }}>
           <Typography variant="h2" component="h1" gutterBottom>
             Welcome to my page
+            Welcome to my page
           </Typography>
           <Typography variant="h5" paragraph>
+            This is a personal website to showcase my work and interests in biotechnology and computer science. As well as give my own insights and opinions on emerging technologies.
             This is a personal website to showcase my work and interests in biotechnology and computer science. As well as give my own insights and opinions on emerging technologies.
           </Typography>
         </Box>

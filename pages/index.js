@@ -5,6 +5,7 @@ import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
@@ -47,30 +48,38 @@ function Mars() {
 }
 
 const cardData = [
-  { title: 'Gene Editing', image: '/gene-editing.jpg' },
-  { title: 'Bioinformatics', image: '/bioinformatics.jpg' },
-  { title: 'Synthetic Biology', image: '/synthetic-biology.jpg' },
+  { title: 'Neural Networks', image: '/neural-network.jpg' },
+  { title: 'Data Analysis', image: '/data-analysis.jpg' },
+  { title: 'Neuroscience', image: '/gene-editing.jpg' },
 ];
 
 const roadmap = [
-  { date: 'Q1 2024', title: 'Launch Blog' },
-  { date: 'Q2 2024', title: 'First Research Publication' },
-  { date: 'Q3 2024', title: 'Collaborate with BioTech Labs' },
-  { date: 'Q4 2024', title: 'Release Bioinformatics Tool' },
+  { date: 'August 10 2024', title: 'Launch Blog' },
+  { date: 'December 2024', title: 'First Research Publication' },
+  { date: 'January 2025', title: 'Complete Appstractify' },
+  { date: 'May 2025', title: 'Release Bioinformatics Tool' },
   // Add more roadmap items
 ];
 
-const aboutImages = ['/about-images/about-image1.jpg','/about-images/about-image2.jpg','/about-images/about-image3.jpg'];
+const aboutImages = ['/about-images/about-image1.jpg', '/about-images/about-image2.jpg', '/about-images/about-image3.jpg'];
 
 const experiences = [
-  { title: 'Research Assistant', company: 'BioTech Lab', duration: '2019-2021' },
-  { title: 'Intern', company: 'GeneTech', duration: '2018' },
+  { title: 'UG Research Assistant', company: 'UNC Medical School fMRI Neuroscience Lab', duration: 'June 2024 - Present' },
+  { title: 'PM Intern', company: 'Lenovo', duration: 'June 2024 - July 2024' },
+  { title: 'Backend Software Engineer', company: 'App Team Carolina', duration: 'Feb 2024 - Present' },
+  { title: 'Software Engineer Intern', company: 'Amtev', duration: 'May 2023 - Aug 2023' }
   // Add more experiences
 ];
 
 const projects = [
-  { title: 'CRISPR Gene Editing', description: 'Worked on...' },
-  { title: 'Bioinformatics Tool', description: 'Developed...' },
+  { title: 'Appstractify', description: 'Worked on...' },
+  { title: 'Brain Analysis', description: 'Developed...' },
+  { title: 'RemoteEyeMouse', description: 'Worked on...' },
+  { title: 'Fema Data Research', description: 'Developed...' },
+  { title: 'MixNMath', description: 'Worked on...' },
+  { title: 'TerminalBankingSystem', description: 'Developed...' },
+  { title: 'SolarSystemSimulation', description: 'Worked on...' },
+  { title: 'PlanetaryGravity', description: 'Developed...' },
   // Add more projects
 ];
 
@@ -99,10 +108,10 @@ const Home = () => {
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 8 }}>
         <Box sx={{ flex: 1, pr: 4 }}>
           <Typography variant="h2" component="h1" gutterBottom>
-            Welcome to the Biotech Blog
+            Welcome to my page
           </Typography>
           <Typography variant="h5" paragraph>
-            This blog explores the latest advancements in biotechnology, featuring articles on cutting-edge research, innovative technologies, and insights from industry experts. Stay tuned for exciting updates and deep dives into the world of biotech!
+            This is a personal website to showcase my work and interests in biotechnology and computer science. As well as give my own insights and opinions on emerging technologies.
           </Typography>
         </Box>
         <Box sx={{ flex: 1, height: 400 }}>
@@ -164,7 +173,7 @@ const Home = () => {
                 />
                 <Typography variant="h5" gutterBottom>Kritan Bhurtyal</Typography>
                 <Typography variant="body1" paragraph>
-                  Passionate about biotechnology and its potential to change the world...
+                  I am passionate about making a change with technology. I am mainly interested in the intersection between technology and medicine.
                 </Typography>
               </CardContent>
             </Card>
@@ -203,8 +212,8 @@ const Home = () => {
         <Typography variant="h5" gutterBottom>Experience</Typography>
         <Box sx={{ overflowX: 'auto', whiteSpace: 'nowrap', mb: 6, scrollbarWidth: 'none', '&::-webkit-scrollbar': { display: 'none' } }}>
           {experiences.map((exp, index) => (
-            <Card key={index} sx={{ display: 'inline-block', width: 300, mr: 4 }}>
-              <CardContent>
+            <Card key={index} sx={{ display: 'inline-block', width: 300, mr: 4, wordWrap: 'break-word', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+              <CardContent sx={{ whiteSpace: 'normal' }}>
                 <Typography variant="h6">{exp.title}</Typography>
                 <Typography variant="body2">{exp.company}</Typography>
                 <Typography variant="body2" color="text.secondary">{exp.duration}</Typography>
@@ -215,10 +224,11 @@ const Home = () => {
         <Typography variant="h5" gutterBottom>Projects</Typography>
         <Box sx={{ overflowX: 'auto', whiteSpace: 'nowrap', scrollbarWidth: 'none', '&::-webkit-scrollbar': { display: 'none' } }}>
           {projects.map((project, index) => (
-            <Card key={index} sx={{ display: 'inline-block', width: 300, mr: 4 }}>
-              <CardContent>
+            <Card key={index} sx={{ display: 'inline-block', width: 300, mr: 4, wordWrap: 'break-word', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+              <CardContent sx={{ whiteSpace: 'normal' }}>
                 <Typography variant="h6">{project.title}</Typography>
                 <Typography variant="body2">{project.description}</Typography>
+                <Button variant="contained" color="primary" sx={{ mt: 2 }}>Try Me</Button>
               </CardContent>
             </Card>
           ))}

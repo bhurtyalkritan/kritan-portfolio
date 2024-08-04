@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
@@ -44,24 +45,21 @@ function Mars() {
     scene.rotation.y = rotation;
   });
 
-  return <primitive object={scene} scale={0.1} position={[0, 0, -7]} />;
+  return <primitive object={scene} scale={9.8} position={[0, 0, -7]} />;
 }
 
 const cardData = [
   { title: 'Neural Networks', image: '/neural-network.jpg' },
   { title: 'Data Analysis', image: '/data-analysis.jpg' },
-  { title: 'Neuroscience', image: '/gene-editing.jpg' },
-  { title: 'Neural Networks', image: '/neural-network.jpg' },
-  { title: 'Data Analysis', image: '/data-analysis.jpg' },
-  { title: 'Neuroscience', image: '/gene-editing.jpg' },
+  { title: 'Neuroscience', image: '/gene-editing.jpg' }
 ];
 
-const roadmap = [
+const goals = [
   { date: 'August 10 2024', title: 'Launch Blog' },
   { date: 'December 2024', title: 'First Research Publication' },
   { date: 'January 2025', title: 'Complete Appstractify' },
   { date: 'May 2025', title: 'Release Bioinformatics Tool' },
-  // Add more roadmap items
+  // Add more goals items
 ];
 
 const aboutImages = ['/about-images/about-image1.jpg', '/about-images/about-image2.jpg', '/about-images/about-image3.jpg'];
@@ -70,38 +68,48 @@ const experiences = [
   { title: 'UG Research Assistant', company: 'UNC Medical School fMRI Neuroscience Lab', duration: 'June 2024 - Present' },
   { title: 'PM Intern', company: 'Lenovo', duration: 'June 2024 - July 2024' },
   { title: 'Backend Software Engineer', company: 'App Team Carolina', duration: 'Feb 2024 - Present' },
-  { title: 'Software Engineer Intern', company: 'Amtev', duration: 'May 2023 - Aug 2023' }
-  { title: 'UG Research Assistant', company: 'UNC Medical School fMRI Neuroscience Lab', duration: 'June 2024 - Present' },
-  { title: 'PM Intern', company: 'Lenovo', duration: 'June 2024 - July 2024' },
-  { title: 'Backend Software Engineer', company: 'App Team Carolina', duration: 'Feb 2024 - Present' },
-  { title: 'Software Engineer Intern', company: 'Amtev', duration: 'May 2023 - Aug 2023' }
+  { title: 'Software Engineer Intern', company: 'Amtev', duration: 'May 2023 - Aug 2023' },
   // Add more experiences
 ];
 
 const projects = [
-  { title: 'Appstractify', description: 'Worked on...' },
-  { title: 'Brain Analysis', description: 'Developed...' },
-  { title: 'RemoteEyeMouse', description: 'Worked on...' },
-  { title: 'Fema Data Research', description: 'Developed...' },
-  { title: 'MixNMath', description: 'Worked on...' },
-  { title: 'TerminalBankingSystem', description: 'Developed...' },
-  { title: 'SolarSystemSimulation', description: 'Worked on...' },
-  { title: 'PlanetaryGravity', description: 'Developed...' },
-  // Add more projects
+  { title: 'Appstractify', description: 'Worked on...', link: 'https://github.com/bhurtyalkritan/brainAnalysis' },
+  { title: 'Brain Analysis', description: 'Developed...', link: 'https://github.com/bhurtyalkritan/brainAnalysis' },
+  { title: 'RemoteEyeMouse', description: 'Worked on...', link: 'https://github.com/bhurtyalkritan/RemoteMouse' },
+  { title: 'Fema Data Research', description: 'Developed...', link: 'https://github.com/bhurtyalkritan/FemaDataAnalysis' },
+  { title: 'MixNMath', description: 'Worked on...', link: 'https://github.com/bhurtyalkritan/MixNMath' },
+  { title: 'TerminalBankingSystem', description: 'Developed...', link: 'https://github.com/bhurtyalkritan/bankingSystem' },
+  { title: 'SolarSystemSimulation', description: 'Worked on...', link: 'https://github.com/bhurtyalkritan/SolarSystemSimulation' },
+  { title: 'PlanetaryGravity', description: 'Developed...', link: 'https://github.com/bhurtyalkritan/planetary-gravity' },
+  { title: 'FinanceScrapper', description: 'Developed...', link: 'https://github.com/JordanLakeTrading/JLT-WEBSCRAPPER' },
+  { title: 'Singularity', description: 'Developed...', link: 'https://github.com/bhurtyalkritan/Singularity' },
 ];
 
 const blogPosts = [
-  { title: 'CRISPR Breakthrough', image: '/crispr.jpg' },
-  { title: 'AI in Drug Discovery', image: '/ai-drug.jpg' },
-  { title: 'Personalized Medicine', image: '/personalized-med.jpg' },
-  { title: 'Bioprinting Organs', image: '/bioprinting.jpg' },
-  { title: 'Microbiome Research', image: '/microbiome.jpg' },
-  { title: 'Gene Therapy Advances', image: '/gene-therapy.jpg' },
+  { title: 'CRISPR Breakthrough', image: '/crispr.jpg', slug: 'crispr-breakthrough' },
+  { title: 'AI in Drug Discovery', image: '/ai-drug.jpg', slug: 'ai-in-drug-discovery' },
+  { title: 'Personalized Medicine', image: '/personalized-med.jpg', slug: 'personalized-medicine' },
+  { title: 'Bioprinting Organs', image: '/bioprinting.jpg', slug: 'bioprinting-organs' },
+  { title: 'Microbiome Research', image: '/microbiome.jpg', slug: 'microbiome-research' },
+  { title: 'Gene Therapy Advances', image: '/gene-therapy.jpg', slug: 'gene-therapy-advances' },
 ];
 
 const Home = () => {
   const [hoveredCard, setHoveredCard] = useState(null);
   const [currentAboutImage, setCurrentAboutImage] = useState(0);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [showGame, setShowGame] = useState(null);
+
+  const arcadeGames = [
+    { title: 'Space Invaders', description: 'Classic space shooting game.', src: '/space-invaders.html' },
+    { title: 'Memory Match', description: 'Find all the matching pairs.', src: '/memory-match.html' },
+    { title: 'Whack-A-Mole', description: 'Click on the moles as they appear.', src: '/whack-a-mole.html' },
+    { title: 'Pong', description: 'Classic pong game with paddles.', src: '/pong.html' },
+  ];
+
+  const filteredPosts = blogPosts.filter((post) =>
+    post.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -110,16 +118,22 @@ const Home = () => {
     return () => clearInterval(timer);
   }, []);
 
+  const handlePlayClick = (src) => {
+    setShowGame(src);
+  };
+
+  const handleCloseClick = () => {
+    setShowGame(null);
+  };
+
   return (
     <Box sx={{ mt: 10, mb: 10 }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 8 }}>
         <Box sx={{ flex: 1, pr: 4 }}>
           <Typography variant="h2" component="h1" gutterBottom>
             Welcome to my page
-            Welcome to my page
           </Typography>
           <Typography variant="h5" paragraph>
-            This is a personal website to showcase my work and interests in biotechnology and computer science. As well as give my own insights and opinions on emerging technologies.
             This is a personal website to showcase my work and interests in biotechnology and computer science. As well as give my own insights and opinions on emerging technologies.
           </Typography>
         </Box>
@@ -132,7 +146,7 @@ const Home = () => {
           </Canvas>
         </Box>
       </Box>
-
+      
       {/* Topic Cards */}
       <Box sx={{ mb: 14 }}>
         <Grid container spacing={6}>
@@ -165,6 +179,7 @@ const Home = () => {
           ))}
         </Grid>
       </Box>
+
 
       {/* About Me Section */}
       <Box sx={{ mb: 14 }}>
@@ -237,64 +252,22 @@ const Home = () => {
               <CardContent sx={{ whiteSpace: 'normal' }}>
                 <Typography variant="h6">{project.title}</Typography>
                 <Typography variant="body2">{project.description}</Typography>
-                <Button variant="contained" color="primary" sx={{ mt: 2 }}>Try Me</Button>
+                <Button variant="contained" color="primary" sx={{ mt: 2 }} href={project.link} target="_blank" rel="noopener noreferrer">
+                  Try Me
+                </Button>
               </CardContent>
             </Card>
           ))}
         </Box>
       </Box>
-
-      {/* Blog Section */}
-      <Box sx={{ mt: 14 }}>
+      
+      {/* Goals Section */}
+      <Box sx={{ mb: 14 }}>
         <Typography variant="h3" component="h2" gutterBottom sx={{ textAlign: 'left', mb: 6 }}>
-          Blogs
-        </Typography>
-        <TextField
-          fullWidth
-          variant="outlined"
-          placeholder="Search blogs..."
-          sx={{
-            mb: 6,
-            '& .MuiOutlinedInput-root': {
-              borderRadius: '50px',
-            },
-          }}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <SearchIcon />
-              </InputAdornment>
-            ),
-          }}
-        />
-        <Grid container spacing={6}>
-          {blogPosts.map((post, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
-              <Card>
-                <CardMedia
-                  component="img"
-                  height="140"
-                  image={post.image}
-                  alt={post.title}
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h6" component="div">
-                    {post.title}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-      </Box>
-
-      {/* Roadmap Section */}
-      <Box sx={{ mt: 14 }}>
-        <Typography variant="h3" component="h2" gutterBottom sx={{ textAlign: 'left', mb: 6 }}>
-          Roadmap
+          Goals
         </Typography>
         <Grid container spacing={6}>
-          {roadmap.map((item, index) => (
+          {goals.map((item, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
               <Card>
                 <CardContent>
@@ -311,17 +284,138 @@ const Home = () => {
         </Grid>
       </Box>
 
+      <Box sx={{ mt: 14 }}>
+        <Typography variant="h3" component="h2" gutterBottom sx={{ textAlign: 'left', mb: 6 }}>
+          Blogs
+        </Typography>
+        <TextField
+          fullWidth
+          variant="outlined"
+          placeholder="Search blogs..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          sx={{
+            mb: 6,
+            '& .MuiOutlinedInput-root': {
+              borderRadius: '50px',
+            },
+          }}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchIcon />
+              </InputAdornment>
+            ),
+          }}
+        />
+        <Grid container spacing={6}>
+          {filteredPosts.map((post, index) => (
+            <Grid item xs={12} sm={6} md={4} key={index}>
+              <Card>
+                <CardMedia
+                  component="img"
+                  height="140"
+                  image={post.image}
+                  alt={post.title}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h6" component="div">
+                    {post.title}
+                  </Typography>
+                  <Link href={`/blog/${post.slug}`} passHref>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      sx={{ mt: 2, borderRadius: '20px' }}
+                    >
+                      See More
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
+
+      {/* Kritan's Arcade */}
+      <Box sx={{ mb: 14, mt: 14 }}>
+        <Typography variant="h3" component="h2" gutterBottom sx={{ textAlign: 'left', mb: 3 }}>
+          Kritan's Arcade
+        </Typography>
+        <Typography variant="h5" paragraph sx={{ textAlign: 'left', mb: 6 }}>
+          Im very passionate about game development, you can find my big projects on github but heres some mini-games to keep you engaged:
+        </Typography>
+        <Grid container spacing={6} sx={{ justifyContent: 'center' }}>
+          {arcadeGames.map((game, index) => (
+            <Grid item xs={12} sm={6} md={3} key={index}>
+              <Card sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+                <CardContent sx={{ flexGrow: 1 }}>
+                  <Typography variant="h5" component="div" gutterBottom>
+                    {game.title}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {game.description}
+                  </Typography>
+                </CardContent>
+                <Box sx={{ textAlign: 'center', mb: 2 }}>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    sx={{ borderRadius: '20px' }}
+                    onClick={() => handlePlayClick(game.src)}
+                    disabled={showGame && showGame !== game.src}
+                  >
+                    Play
+                  </Button>
+                </Box>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+        {showGame && (
+          <Box sx={{ mt: 6, textAlign: 'center' }}>
+            <Button
+              variant="contained"
+              color="secondary"
+              sx={{ borderRadius: '20px', mb: 6 }}
+              onClick={handleCloseClick}
+            >
+              Close
+            </Button>
+            <iframe
+              src={showGame}
+              style={{ width: '100%', height: '500px', border: 'none' }}
+              title="Game"
+            ></iframe>
+          </Box>
+        )}
+      </Box>
+
       {/* Links Section */}
       <Box sx={{ mt: 14 }}>
         <Typography variant="h3" component="h2" gutterBottom sx={{ textAlign: 'left', mb: 6 }}>
           Links
         </Typography>
         <Grid container spacing={6}>
-          <Grid item xs={12} md={6} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-around' }}>
-            <LinkedInIcon fontSize="large" sx={{ mb: 2, fontSize: 60 }} />
-            <GitHubIcon fontSize="large" sx={{ mb: 2, fontSize: 60 }} />
-            <YouTubeIcon fontSize="large" sx={{ mb: 2, fontSize: 60 }} />
-            <FaMedium size={60} sx={{ mb: 2 }} />
+          <Grid
+            item
+            xs={12}
+            md={6}
+            sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-around' }}
+          >
+            <Link href="https://www.linkedin.com/in/kritanbhurtyal/" target="_blank" rel="noopener" passHref>
+              <LinkedInIcon fontSize="large" sx={{ mb: 2, fontSize: 60 }} />
+            </Link>
+            <Link href="https://github.com/bhurtyalkritan" target="_blank" rel="noopener" passHref>
+              <GitHubIcon fontSize="large" sx={{ mb: 2, fontSize: 60 }} />
+            </Link>
+            <Link href="https://www.youtube.com/channel/UCE1xLUv0ZnARG_pXjuq3p6A" target="_blank" rel="noopener" passHref>
+              <YouTubeIcon fontSize="large" sx={{ mb: 2, fontSize: 60 }} />
+            </Link>
+            <Link href="https://medium.com/@kritanbhurtyal" target="_blank" rel="noopener" passHref  >
+              <FaMedium size={60} style={{ marginBottom: 16 }} />
+            </Link>
           </Grid>
           <Grid item xs={12} md={6} sx={{ height: 400 }}>
             <Canvas camera={{ position: [0, 0, 4] }}>

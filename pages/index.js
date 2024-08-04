@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Box from '@mui/material/Box';
@@ -160,12 +161,14 @@ const Home = () => {
                 transition={{ duration: 0.5, delay: index * 0.2 }}
                 whileHover={{ scale: 1.05 }}
               >
-                <CardMedia
-                  component="img"
-                  height="140"
-                  image={card.image}
-                  alt={card.title}
-                />
+                <CardMedia>
+                  <Image
+                    src={card.image}
+                    alt={card.title}
+                    width={500}
+                    height={500}
+                  />
+                </CardMedia>
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
                     {card.title}
@@ -197,17 +200,18 @@ const Home = () => {
                 />
                 <Typography variant="h5" gutterBottom>Kritan Bhurtyal</Typography>
                 <Typography variant="body1" paragraph>
-                  I am passionate about making a change with technology. I am mainly interested in the intersection between technology and medicine.
+                  I&apos;m passionate about making a change with technology. I am mainly interested in the intersection between technology and medicine.
                 </Typography>
               </CardContent>
             </Card>
           </Grid>
           <Grid item xs={12} md={6}>
             <Box sx={{ position: 'relative', height: '300px', overflow: 'hidden' }}>
-              <img
+              <Image
                 src={aboutImages[currentAboutImage]}
                 alt="About me"
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                layout="fill"
+                objectFit="cover"
               />
             </Box>
           </Grid>
@@ -312,12 +316,14 @@ const Home = () => {
           {filteredPosts.map((post, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
               <Card>
-                <CardMedia
-                  component="img"
-                  height="140"
-                  image={post.image}
-                  alt={post.title}
-                />
+                <CardMedia>
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    width={500}
+                    height={500}
+                  />
+                </CardMedia>
                 <CardContent>
                   <Typography gutterBottom variant="h6" component="div">
                     {post.title}
@@ -341,10 +347,10 @@ const Home = () => {
       {/* Kritan's Arcade */}
       <Box sx={{ mb: 14, mt: 14 }}>
         <Typography variant="h3" component="h2" gutterBottom sx={{ textAlign: 'left', mb: 3 }}>
-          Kritan's Arcade
+          Kritan&apos;s Arcade
         </Typography>
         <Typography variant="h5" paragraph sx={{ textAlign: 'left', mb: 6 }}>
-          Im very passionate about game development, you can find my big projects on github but heres some mini-games to keep you engaged:
+          I&apos;m very passionate about game development, you can find my big projects on github but here&apos;s some mini-games to keep you engaged:
         </Typography>
         <Grid container spacing={6} sx={{ justifyContent: 'center' }}>
           {arcadeGames.map((game, index) => (

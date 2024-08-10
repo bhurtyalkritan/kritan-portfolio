@@ -73,28 +73,26 @@ const experiences = [
 ];
 
 const projects = [
-  { title: 'Appstractify', description: 'Worked on...', link: 'https://github.com/bhurtyalkritan/AppstractifyBeta' },
-  { title: 'Brain Analysis', description: 'Developed...', link: 'https://github.com/bhurtyalkritan/brainAnalysis' },
-  { title: 'Finance Web Scrapper', description: 'Developed...', link: 'https://github.com/JordanLakeTrading/JLT-WEBSCRAPPER' },
-  { title: 'PondSimulation', description: 'Worked on...', link: 'https://github.com/bhurtyalkritan/pondSimulation' },
-  { title: 'RemoteEyeMouse', description: 'Worked on...', link: 'https://github.com/bhurtyalkritan/RemoteMouse' },
-  { title: 'Fema Data Research', description: 'Developed...', link: 'https://github.com/bhurtyalkritan/FemaDataAnalysis' },
-  { title: 'MixNMath', description: 'Worked on...', link: 'https://github.com/bhurtyalkritan/MixNMath' },
-  { title: 'TerminalBankingSystem', description: 'Developed...', link: 'https://github.com/bhurtyalkritan/bankingSystem' },
-  { title: 'SolarSystemSimulation', description: 'Worked on...', link: 'https://github.com/bhurtyalkritan/SolarSystemSimulation' },
-  { title: 'PlanetaryGravity', description: 'Developed...', link: 'https://github.com/bhurtyalkritan/planetary-gravity' },
-  { title: 'FinanceScrapper', description: 'Developed...', link: 'https://github.com/JordanLakeTrading/JLT-WEBSCRAPPER' },
-  { title: 'Singularity', description: 'Developed...', link: 'https://github.com/bhurtyalkritan/Singularity' },
+  { title: 'Appstractify', description: 'Open-source data science tool with Visualization, Synthetic data, chat, and data filtering.', link: 'https://github.com/bhurtyalkritan/AppstractifyBeta' },
+  { title: 'Brain Analysis', description: 'MRI Scan analysis with annotations, 3d visualizations, ML (skull stripping, segmentation, etc), Time series analysis with GLM, report generation', link: 'https://github.com/bhurtyalkritan/brainAnalysis' },
+  { title: 'Finance Web Scrapper', description: 'Quick, Accurate scrapper of financial data using stock symbols, automatically does sentiment analysis and saves both stock data and analysis data into csv.', link: 'https://github.com/JordanLakeTrading/JLT-WEBSCRAPPER' },
+  { title: 'PondSimulation', description: 'Simulation of evolution in pond enviroment using neural networks .', link: 'https://github.com/bhurtyalkritan/pondSimulation' },
+  { title: 'RemoteEyeMouse', description: 'Accessibility tool where you can use your vision as the mouse, blink with certain eye for left/right cick, voice commands, etc.', link: 'https://github.com/bhurtyalkritan/RemoteMouse' },
+  { title: 'Fema Data Research', description: 'Data analysis and research paper on FEMA Disaster data', link: 'https://github.com/bhurtyalkritan/FemaDataAnalysis' },
+  { title: 'MixNMath', description: 'Math game for quantative traders, which tests mental math, and algebra skills.', link: 'https://github.com/bhurtyalkritan/MixNMath' },
+  { title: 'TerminalBankingSystem', description: 'Terminal based banking system that emulates deposits, withdraws, interests, investing.', link: 'https://github.com/bhurtyalkritan/bankingSystem' },
+  { title: 'SolarSystemSimulation', description: 'Accurate simulation of the solar system orbits, with extensive data showcased.', link: 'https://github.com/bhurtyalkritan/SolarSystemSimulation' },
+  { title: 'PlanetaryGravity', description: 'Javascript physics showcase with balls, and gravity changes based on planets', link: 'https://github.com/bhurtyalkritan/planetary-gravity' },
+  { title: 'Singularity', description: 'Black hole simulation with spagettification, and realistic physics of different components (event horizon, etc)', link: 'https://github.com/bhurtyalkritan/Singularity' },
+  { title: 'Connect Four', description: 'Black hole simulation with spagettification, and realistic physics of different components (event horizon, etc)', link: 'https://github.com/bhurtyalkritan/Singularity' },
+  { title: 'Singularity', description: 'Black hole simulation with spagettification, and realistic physics of different components (event horizon, etc)', link: 'https://github.com/bhurtyalkritan/Singularity' }
 ];
 
 const blogPosts = [
-  { title: 'CRISPR Breakthrough', image: '/crispr.jpg', slug: 'crispr-breakthrough' },
-  { title: 'AI in Drug Discovery', image: '/ai-drug.jpg', slug: 'ai-in-drug-discovery' },
-  { title: 'Personalized Medicine', image: '/personalized-med.jpg', slug: 'personalized-medicine' },
-  { title: 'Bioprinting Organs', image: '/bioprinting.jpg', slug: 'bioprinting-organs' },
-  { title: 'Microbiome Research', image: '/microbiome.jpg', slug: 'microbiome-research' },
-  { title: 'Gene Therapy Advances', image: '/gene-therapy.jpg', slug: 'gene-therapy-advances' },
+  { title: 'Understanding CRISPR', image: '/crispr.webp', link: 'https://medium.com/@kritanbhurtyal/understanding-crispr-the-intersection-of-biology-and-computer-science-1f7723d971be' },
+  // Add more blog posts here
 ];
+
 
 const Home = () => {
   const [hoveredCard, setHoveredCard] = useState(null);
@@ -268,7 +266,8 @@ const Home = () => {
         <Typography variant="h5" gutterBottom>Projects</Typography>
         <Box sx={{ overflowX: 'auto', whiteSpace: 'nowrap', scrollbarWidth: 'none', '&::-webkit-scrollbar': { display: 'none' } }}>
           {projects.map((project, index) => (
-            <Card key={index} sx={{ display: 'inline-block', width: 300, mr: 4, wordWrap: 'break-word', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+            <Card key={index} sx={{ display: 'inline-block', width: 300, mr: 4, wordWrap: 'break-word', overflow: 'hidden', textOverflow: 'ellipsis' , width: '300px', // Standardized width
+            height: '220px',}}>
               <CardContent sx={{ whiteSpace: 'normal' }}>
                 <Typography variant="h6">{project.title}</Typography>
                 <Typography variant="body2">{project.description}</Typography>
@@ -305,60 +304,63 @@ const Home = () => {
       </Box>
 
       <Box sx={{ mt: 14 }}>
-        <Typography variant="h3" component="h2" gutterBottom sx={{ textAlign: 'left', mb: 6 }}>
-          Blogs
-        </Typography>
-        <TextField
-          fullWidth
-          variant="outlined"
-          placeholder="Search blogs..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          sx={{
+    <Typography variant="h3" component="h2" gutterBottom sx={{ textAlign: 'left', mb: 6 }}>
+        Blogs
+    </Typography>
+    <TextField
+        fullWidth
+        variant="outlined"
+        placeholder="Search blogs..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        sx={{
             mb: 6,
             '& .MuiOutlinedInput-root': {
-              borderRadius: '50px',
+                borderRadius: '50px',
             },
-          }}
-          InputProps={{
+        }}
+        InputProps={{
             startAdornment: (
-              <InputAdornment position="start">
-                <SearchIcon />
-              </InputAdornment>
+                <InputAdornment position="start">
+                    <SearchIcon />
+                </InputAdornment>
             ),
-          }}
-        />
-        <Grid container spacing={6}>
-          {filteredPosts.map((post, index) => (
+        }}
+    />
+    <Grid container spacing={6}>
+        {filteredPosts.map((post, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
-              <Card>
-                <CardMedia>
-                  <Image
-                    src={post.image}
-                    alt={post.title}
-                    width={500}
-                    height={500}
-                  />
-                </CardMedia>
-                <CardContent>
-                  <Typography gutterBottom variant="h6" component="div">
-                    {post.title}
-                  </Typography>
-                  <Link href={`/blog/${post.slug}`} passHref>
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      sx={{ mt: 2, borderRadius: '20px' }}
-                    >
-                      See More
-                    </Button>
-                  </Link>
-                </CardContent>
-              </Card>
+                <Card>
+                    <CardMedia>
+                        <Image
+                            src={post.image}
+                            alt={post.title}
+                            width={500}
+                            height={200}
+                        />
+                    </CardMedia>
+                    <CardContent>
+                        <Typography gutterBottom variant="h6" component="div">
+                            {post.title}
+                        </Typography>
+                        <Link href={post.link} passHref>
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                sx={{ mt: 2, borderRadius: '20px' }}
+                                target="_blank" // Opens the link in a new tab
+                                rel="noopener noreferrer"
+                            >
+                                Read
+                            </Button>
+                        </Link>
+                    </CardContent>
+                </Card>
             </Grid>
-          ))}
-        </Grid>
-      </Box>
+        ))}
+    </Grid>
+</Box>
+
 
       {/* Kritan's Arcade */}
       <Box sx={{ mb: 14, mt: 14 }}>

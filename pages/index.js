@@ -66,16 +66,17 @@ const goals = [
 const aboutImages = ['/about-images/about-image1.jpg', '/about-images/about-image2.jpg', '/about-images/about-image3.jpg'];
 
 const experiences = [
-  { title: 'UG Research Assistant', company: 'UNC Medical School fMRI Neuroscience Lab', duration: 'June 2024 - Present' },
+  { title: 'Product Support Engineer Intern', company: 'Tesla', duration: 'Sep 2024 - Dec 2024' },
   { title: 'PM Intern', company: 'Lenovo', duration: 'June 2024 - July 2024' },
   { title: 'Backend Software Engineer', company: 'App Team Carolina', duration: 'Feb 2024 - Present' },
   { title: 'Software Engineer Intern', company: 'Amtev', duration: 'May 2023 - Aug 2023' },
-  // Add more experiences
 ];
 
 const projects = [
-  { title: 'Appstractify', description: 'Worked on...', link: 'https://github.com/bhurtyalkritan/brainAnalysis' },
+  { title: 'Appstractify', description: 'Worked on...', link: 'https://github.com/bhurtyalkritan/AppstractifyBeta' },
   { title: 'Brain Analysis', description: 'Developed...', link: 'https://github.com/bhurtyalkritan/brainAnalysis' },
+  { title: 'Finance Web Scrapper', description: 'Developed...', link: 'https://github.com/JordanLakeTrading/JLT-WEBSCRAPPER' },
+  { title: 'PondSimulation', description: 'Worked on...', link: 'https://github.com/bhurtyalkritan/pondSimulation' },
   { title: 'RemoteEyeMouse', description: 'Worked on...', link: 'https://github.com/bhurtyalkritan/RemoteMouse' },
   { title: 'Fema Data Research', description: 'Developed...', link: 'https://github.com/bhurtyalkritan/FemaDataAnalysis' },
   { title: 'MixNMath', description: 'Worked on...', link: 'https://github.com/bhurtyalkritan/MixNMath' },
@@ -103,7 +104,7 @@ const Home = () => {
 
   const arcadeGames = [
     { title: 'Space Invaders', description: 'Classic space shooting game.', src: '/space-invaders.html' },
-    { title: 'Memory Match', description: 'Find all the matching pairs.', src: '/memory-match.html' },
+    { title: 'Memory Match', description: 'Find all the matching pairs.', src: '/index.html' },
     { title: 'Whack-A-Mole', description: 'Click on the moles as they appear.', src: '/whack-a-mole.html' },
     { title: 'Pong', description: 'Classic pong game with paddles.', src: '/pong.html' },
   ];
@@ -161,14 +162,12 @@ const Home = () => {
                 transition={{ duration: 0.5, delay: index * 0.2 }}
                 whileHover={{ scale: 1.05 }}
               >
-                <CardMedia>
-                  <Image
-                    src={card.image}
-                    alt={card.title}
-                    width={500}
-                    height={500}
-                  />
-                </CardMedia>
+                <CardMedia
+                  component="img"
+                  height="140"
+                  image={card.image}
+                  alt={card.title}
+                />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
                     {card.title}
@@ -238,17 +237,34 @@ const Home = () => {
           Portfolio
         </Typography>
         <Typography variant="h5" gutterBottom>Experience</Typography>
-        <Box sx={{ overflowX: 'auto', whiteSpace: 'nowrap', mb: 6, scrollbarWidth: 'none', '&::-webkit-scrollbar': { display: 'none' } }}>
-          {experiences.map((exp, index) => (
-            <Card key={index} sx={{ display: 'inline-block', width: 300, mr: 4, wordWrap: 'break-word', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-              <CardContent sx={{ whiteSpace: 'normal' }}>
-                <Typography variant="h6">{exp.title}</Typography>
-                <Typography variant="body2">{exp.company}</Typography>
-                <Typography variant="body2" color="text.secondary">{exp.duration}</Typography>
-              </CardContent>
-            </Card>
-          ))}
-        </Box>
+         <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', mb: 6 }}>
+    {experiences.map((exp, index) => (
+      <Card
+        key={index}
+        sx={{
+          width: '300px', // Standardized width
+          height: '150px', // Standardized height
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'flex-start',
+          p: 2,
+          mb: 4,
+          boxShadow: 3, // Optional: Add some shadow for visual effect
+        }}
+      >
+        <Typography variant="h6" gutterBottom>
+          {exp.title}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          {exp.company}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          {exp.duration}
+        </Typography>
+      </Card>
+    ))}
+  </Box>
         <Typography variant="h5" gutterBottom>Projects</Typography>
         <Box sx={{ overflowX: 'auto', whiteSpace: 'nowrap', scrollbarWidth: 'none', '&::-webkit-scrollbar': { display: 'none' } }}>
           {projects.map((project, index) => (

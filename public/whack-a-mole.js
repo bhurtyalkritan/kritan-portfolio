@@ -1,52 +1,54 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const holes = document.querySelectorAll('.hole');
-    const scoreBoard = document.getElementById('score');
-    const moles = document.querySelectorAll('.mole');
-    let lastHole;
-    let timeUp = false;
-    let score = 0;
-  
-    function randomTime(min, max) {
-      return Math.round(Math.random() * (max - min) + min);
-    }
-  
-    function randomHole(holes) {
-      const idx = Math.floor(Math.random() * holes.length);
-      const hole = holes[idx];
-      if (hole === lastHole) {
+const holes = document.querySelectorAll('.hole');
+const scoreBoard = document.getElementById('score');
+let score = 0;
+let lastHole;
+let timeUp = false;
+
+function randomTime(min, max) {
+    return Math.round(Math.random() * (max - min) + min);
+}
+
+function randomHole(holes) {
+    const idx = Math.floor(Math.random() * holes.length);
+    const hole = holes[idx];
+    if (hole === lastHole) {
         return randomHole(holes);
-      }
-      lastHole = hole;
-      return hole;
     }
-  
-    function peep() {
-      const time = randomTime(200, 1000);
-      const hole = randomHole(holes);
-      hole.querySelector('.mole').classList.add('up');
-      setTimeout(() => {
-        hole.querySelector('.mole').classList.remove('up');
+    lastHole = hole;
+    return hole;
+}
+
+function peep() {
+    const time = randomTime(400, 1200);
+    const hole = randomHole(holes);
+    const character = hole.children[0];
+    character.style.top = '0';
+    setTimeout(() => {
+        character.style.top = '100%';
         if (!timeUp) peep();
-      }, time);
+    }, time);
+}
+
+function startGame() {
+    scoreBoard.textContent = 'Score: 0';
+    score = 0;
+    timeUp = false;
+    peep();
+    setTimeout(() => timeUp = true, 15000);
+}
+
+function bash(e) {
+    if (!e.isTrusted) return; // prevent fake clicks
+    if (this.classList.contains('zombie')) {
+        score += 1; // Zombies give points
+    } else if (this.classList.contains('ghost')) {
+        score -= 1; // Ghosts subtract points
+    } else if (this.classList.contains('human')) {
+        score -= 2; // Humans subtract more points
     }
-  
-    function startGame() {
-      scoreBoard.textContent = 0;
-      timeUp = false;
-      score = 0;
-      peep();
-      setTimeout(() => timeUp = true, 20000);
-    }
-  
-    function bonk(e) {
-      if (!e.isTrusted) return; // cheater!
-      score++;
-      this.parentNode.querySelector('.mole').classList.remove('up');
-      scoreBoard.textContent = score;
-    }
-  
-    moles.forEach(mole => mole.addEventListener('click', bonk));
-  
-    startGame();
-  });
-  
+    this.style.top = '100%';
+    scoreBoard.textContent = `Score: ${score}`;
+}
+
+holes.forEach(hole => hole.children[0].addEventListener('click', bash));
+startGame();

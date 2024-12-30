@@ -15,9 +15,11 @@ const Navbar = () => {
           </Typography>
         </Link>
         <Box>
-          <Button color="inherit" sx={{ color: 'black' }} href="#blogs">Blogs</Button>
           <Button color="inherit" sx={{ color: 'black' }} href="#about">About</Button>
           <Button color="inherit" sx={{ color: 'black' }} href="#portfolio">Portfolio</Button>
+          <Button color="inherit" sx={{ color: 'black' }} href="#arcade">Arcade</Button>
+          <Button color="inherit" sx={{ color: 'black' }} href="#links">Links</Button>
+
         </Box>
       </Toolbar>
     </AppBar>

@@ -1,0 +1,35 @@
+/* components/AboutSection/AboutSection.module.css */
+
+.aboutContainer {
+    margin-bottom: 5rem;
+  }
+  
+  .imageBox {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+  
+  .infoContainer {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+  }
+  
+  @media (min-width: 768px) {
+    .infoContainer {
+      flex-direction: row;
+      justify-content: space-around;
+    }
+  }
+  
+  .infoItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  

@@ -1,0 +1,86 @@
+/* components/PortfolioSection/PortfolioSection.module.css */
+
+/* Container styling */
+.portfolioContainer {
+    margin-bottom: 5rem;
+  }
+  
+  /* -------------------- */
+  /*   Experience Section */
+  /* -------------------- */
+  
+  /* Make experiences horizontally scrollable, like projects */
+  .experienceContainer {
+    /* Horizontal scrolling container */
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none; /* Hide scrollbar in Firefox */
+    margin-bottom: 2rem;
+  }
+  
+  .experienceContainer::-webkit-scrollbar {
+    display: none; /* Hide scrollbar in Chrome/Safari/Edge */
+  }
+  
+  .experienceCard {
+    display: inline-block;
+    width: 300px;
+    max-width: 300px;
+  
+    /* Let height vary but cap it */
+    min-height: 220px;
+    max-height: 350px;
+  
+    /* Let text wrap and scroll inside if too big */
+    white-space: normal;
+    overflow-wrap: break-word;
+    overflow-y: auto;
+  
+    vertical-align: top;
+    margin-right: 1rem;
+    padding: 1rem;
+  
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 8px;
+  }
+  
+  /* -------------- */
+  /*   Projects     */
+  /* -------------- */
+  
+  .projectsContainer {
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+  }
+  
+  .projectsContainer::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .projectCard {
+    display: inline-block;
+    width: 300px;
+    max-width: 300px;
+    min-height: 220px;
+    max-height: 350px;
+  
+    white-space: normal;
+    overflow-wrap: break-word;
+    overflow-y: auto;
+  
+    vertical-align: top;
+    margin-right: 1rem;
+  
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 8px;
+  }
+  
+  .projectButton {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #1976d2;
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+  }
+  

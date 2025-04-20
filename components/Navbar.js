@@ -15,10 +15,18 @@ const Navbar = () => {
           </Typography>
         </Link>
         <Box>
-          <Button color="inherit" sx={{ color: 'black' }} href="#about">About</Button>
-          <Button color="inherit" sx={{ color: 'black' }} href="#portfolio">Portfolio</Button>
-          <Button color="inherit" sx={{ color: 'black' }} href="#arcade">Arcade</Button>
-          <Button color="inherit" sx={{ color: 'black' }} href="#links">Links</Button>
+          <Link href="/#about" passHref>
+            <Button color="inherit" sx={{ color: 'black' }} component="a">About</Button>
+          </Link>
+          <Link href="/#portfolio" passHref>
+            <Button color="inherit" sx={{ color: 'black' }} component="a">Portfolio</Button>
+          </Link>
+          <Link href="/#tech" passHref>
+            <Button color="inherit" sx={{ color: 'black' }} component="a">Tech</Button>
+          </Link>
+          <Link href="/#links" passHref>
+            <Button color="inherit" sx={{ color: 'black' }} component="a">Links</Button>
+          </Link>
 
         </Box>
       </Toolbar>

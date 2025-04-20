@@ -1,8 +1,8 @@
 // constants/cardData.js
 
 export const cardData = [
-    { title: 'Neural Networks', image: '/neural-network.jpg' },
-    { title: 'Data Analysis', image: '/data-analysis.jpg' },
-    { title: 'Neuroscience', image: '/gene-editing.jpg' },
+    { title: 'Appstractify', image: '/neural-network.jpg' },
+    { title: 'Oconstruct', image: '/data-analysis.jpg' },
+    { title: 'Brain Analysis Dashboard', image: '/gene-editing.jpg' },
   ];
   

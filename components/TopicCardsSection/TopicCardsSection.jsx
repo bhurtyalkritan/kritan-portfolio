@@ -10,7 +10,18 @@ const MotionCard = motion(Card);
 
 function TopicCardsSection({ hoveredCard, setHoveredCard }) {
   return (
+    <>
+    <Typography
+            variant="h4"
+            component="h2"
+            gutterBottom
+            sx={{ textAlign: 'left', mb: 6, fontSize: { xs: '2rem', md: '2.5rem' } }}
+          >
+            Top Projects
+          </Typography>
+    
     <Grid container spacing={4} className={styles.topicCardsContainer}>
+      
       {cardData.map((card, index) => (
         <Grid item xs={12} sm={6} md={4} key={index}>
           <MotionCard
@@ -41,6 +52,7 @@ function TopicCardsSection({ hoveredCard, setHoveredCard }) {
         </Grid>
       ))}
     </Grid>
+    </>
   );
 }
 

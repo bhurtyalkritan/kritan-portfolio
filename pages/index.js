@@ -1,5 +1,3 @@
-// pages/index.js
-
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
@@ -8,7 +6,7 @@ import HeaderSection from '../components/HeaderSection/HeaderSection';
 import TopicCardsSection from '../components/TopicCardsSection/TopicCardsSection';
 import AboutSection from '../components/AboutSection/AboutSection';
 import PortfolioSection from '../components/PortfolioSection/PortfolioSection';
-import ArcadeSection from '../components/ArcadeSection/ArcadeSection';
+import TechSection from '../components/TechSection/TechSection';
 import LinksSection from '../components/LinksSection/LinksSection';
 
 // Example constants (if you want to use them in the page)
@@ -40,7 +38,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Kritan Bhurtyal&apos;s Site</title>
+        <title>Kritan Bhurtyal's Site</title>
         <meta
           name="description"
           content="Personal website showcasing biotech & computer science projects."
@@ -63,12 +61,8 @@ export default function Home() {
         {/* Portfolio */}
         <PortfolioSection />
 
-        {/* Arcade */}
-        <ArcadeSection
-          showGame={showGame}
-          handlePlayClick={handlePlayClick}
-          handleCloseClick={handleCloseClick}
-        />
+        {/* Tech Section */}
+        <TechSection />
 
         {/* Links (includes the QuantGame area) */}
         <LinksSection />

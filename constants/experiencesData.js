@@ -13,8 +13,8 @@ export const experiencesData = [
     },
     {
       title: 'Undergrad Research Assistant',
-      company: 'UNC Medical School',
-      duration: 'July 2024 - Present',
+      company: 'UNC Ecophysiology Lab',
+      duration: 'Feb 2025 - Present',
     },
     {
       title: 'Software Engineer Intern',

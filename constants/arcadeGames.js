@@ -16,4 +16,9 @@ export const arcadeGames = [
       description: 'Classic pong game with paddles.',
       src: '/arcade/pong/pong.html',
     },
+    {
+      title: 'Whack a Mole',
+      description: 'Whack the moles as they pop up!',
+      src: '/arcade/whack-a-mole/whack-a-mole.html',
+    },
   ];

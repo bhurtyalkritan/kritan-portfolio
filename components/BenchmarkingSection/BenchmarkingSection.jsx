@@ -7,7 +7,7 @@ const BenchmarkingSection = () => {
     <section className={styles.benchmarking}>
       <h2>LLM Benchmarking Tests</h2>
       <div className={styles.content}>
-        <p>This section details various benchmarking tests I've conducted on different LLMs.</p>
+        <p>This section details various benchmarking tests I&apos;ve conducted on different LLMs.</p>
         <div className={styles.testsContainer}>
           {benchmarkData.map((test) => (
             <Link key={test.id} href={`/benchmarking/${test.id}`} className={styles.testCard}>

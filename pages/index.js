@@ -38,7 +38,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Kritan Bhurtyal's Site</title>
+        <title>Kritan Bhurtyal&apos;s Site</title>
         <meta
           name="description"
           content="Personal website showcasing biotech & computer science projects."

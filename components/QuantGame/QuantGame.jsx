@@ -1,118 +1,253 @@
 // components/QuantGame/QuantGame.jsx
 
-import { useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
+import { Box, Button, Typography, TextField, Alert } from '@mui/material';
+import { motion } from 'framer-motion';
 import { diceQuestions, cardQuestions } from '../../constants/gameQuestions';
 
+const MotionBox = motion(Box);
+
 function QuantGame() {
-  useEffect(() => {
-    const gameArea = document.getElementById('game-area');
+  const [gameState, setGameState] = useState('menu'); // 'menu', 'animation', 'question'
+  const [gameType, setGameType] = useState(null);
+  const [currentQuestion, setCurrentQuestion] = useState(null);
+  const [userAnswer, setUserAnswer] = useState('');
+  const [feedback, setFeedback] = useState(null);
+  const [isAnimating, setIsAnimating] = useState(false);
 
-    const playGame = (type) => {
-      const gifPath = type === 'dice' ? 'dice.gif' : 'card.gif';
-      gameArea.innerHTML = `
-        <div id="game-animation">
-          <img src="${gifPath}" alt="animation" style="width: 100%; height: auto;">
-        </div>
-      `;
-
-      setTimeout(() => {
-        const questionData = getQuestion(type);
-        gameArea.innerHTML = `
-          <div id="question-box">
-            <h1 style="color: white;">${
-              type.charAt(0).toUpperCase() + type.slice(1)
-            } Game</h1>
-            <p style="color: white;">${questionData.question}</p>
-            <input
-              type="text"
-              id="answer"
-              placeholder="Enter your answer"
-              style="border: 1px solid #ddd; border-radius: 4px; padding: 10px; margin: 10px 0; width: 80%;"
-            />
-            <button
-              id="submit-btn"
-              style="background-color: #555; color: white; border-radius: 20px; padding: 10px 20px; border: none; transition: background-color 0.2s, transform 0.2s;"
-            >
-              Submit
-            </button>
-          </div>
-        `;
-
-        const submitBtn = document.getElementById('submit-btn');
-        if (submitBtn) {
-          submitBtn.addEventListener('click', () => {
-            checkAnswer(questionData.answer, questionData.solution, type);
-          });
-        }
-      }, 3000);
-    };
-
-    const getQuestion = (type) => {
-      if (type === 'dice') {
-        return diceQuestions[Math.floor(Math.random() * diceQuestions.length)];
-      }
-      return cardQuestions[Math.floor(Math.random() * cardQuestions.length)];
-    };
-
-    const checkAnswer = (correctAnswer, solution, type) => {
-      const userAnswer = document.getElementById('answer').value;
-      if (userAnswer.trim() === correctAnswer) {
-        alert('Correct!');
-        setTimeout(() => playGame(type), 2000);
-      } else {
-        alert(`Wrong! ${solution}`);
-        gameArea.innerHTML += `
-          <button
-            id="menu-btn"
-            style="margin-top: 20px; padding: 10px 20px; background-color: #4CAF50; border: none; color: white; border-radius: 25px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); transition: background-color 0.3s, transform 0.3s;"
-          >
-            Menu
-          </button>
-        `;
-        const menuBtn = document.getElementById('menu-btn');
-        if (menuBtn) {
-          menuBtn.addEventListener('click', () => displayStartMenu());
-        }
-      }
-    };
-
-    const displayStartMenu = () => {
-      gameArea.innerHTML = `
-        <div style="text-align: center;">
-          <h1 style="color: white; margin-bottom: 30px;">Quant Game</h1>
-          <div class="game-selector"
-               style="display: flex; justify-content: center; gap: 20px;">
-            <button
-              id="dice-game"
-              style="background-color: #4CAF50; border: none; color: white; padding: 10px 20px; border-radius: 25px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); transition: background-color 0.3s, transform 0.3s;"
-            >
-              Dice Game
-            </button>
-            <button
-              id="card-game"
-              style="background-color: #4CAF50; border: none; color: white; padding: 10px 20px; border-radius: 25px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); transition: background-color 0.3s, transform 0.3s;"
-            >
-              Card Game
-            </button>
-          </div>
-        </div>
-      `;
-
-      const diceGameButton = document.getElementById('dice-game');
-      const cardGameButton = document.getElementById('card-game');
-      if (diceGameButton) {
-        diceGameButton.addEventListener('click', () => playGame('dice'));
-      }
-      if (cardGameButton) {
-        cardGameButton.addEventListener('click', () => playGame('cards'));
-      }
-    };
-
-    // Initialize the game on component mount
-    displayStartMenu();
+  const getRandomQuestion = useCallback((type) => {
+    const questions = type === 'dice' ? diceQuestions : cardQuestions;
+    return questions[Math.floor(Math.random() * questions.length)];
   }, []);
 
-  return null; // No direct JSX, everything is rendered via DOM manipulation
+  const startGame = useCallback((type) => {
+    setGameType(type);
+    setGameState('animation');
+    setIsAnimating(true);
+    setFeedback(null);
+    
+    // Show animation for 2 seconds instead of 3
+    setTimeout(() => {
+      const question = getRandomQuestion(type);
+      setCurrentQuestion(question);
+      setGameState('question');
+      setIsAnimating(false);
+    }, 2000);
+  }, [getRandomQuestion]);
+
+  const handleSubmit = useCallback(() => {
+    if (!currentQuestion || !userAnswer.trim()) return;
+
+    const isCorrect = userAnswer.trim() === currentQuestion.answer;
+    
+    if (isCorrect) {
+      setFeedback({ type: 'success', message: 'Correct! Great job!' });
+      setTimeout(() => {
+        startGame(gameType);
+        setUserAnswer('');
+      }, 1500);
+    } else {
+      setFeedback({ 
+        type: 'error', 
+        message: `Wrong! ${currentQuestion.solution}` 
+      });
+      setTimeout(() => {
+        setGameState('menu');
+        setUserAnswer('');
+        setFeedback(null);
+      }, 3000);
+    }
+  }, [currentQuestion, userAnswer, gameType, startGame]);
+
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      handleSubmit();
+    }
+  };
+
+  const returnToMenu = () => {
+    setGameState('menu');
+    setGameType(null);
+    setCurrentQuestion(null);
+    setUserAnswer('');
+    setFeedback(null);
+  };
+
+  const renderMenu = () => (
+    <MotionBox
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      sx={{
+        textAlign: 'center',
+        color: 'white',
+        padding: 4
+      }}
+    >
+      <Typography variant="h3" gutterBottom sx={{ mb: 4, fontWeight: 'bold' }}>
+        Quant Game
+      </Typography>
+      <Box sx={{ display: 'flex', justifyContent: 'center', gap: 3 }}>
+        <Button
+          variant="contained"
+          size="large"
+          onClick={() => startGame('dice')}
+          sx={{
+            backgroundColor: '#4CAF50',
+            '&:hover': { backgroundColor: '#45a049' },
+            borderRadius: '25px',
+            padding: '12px 30px',
+            fontSize: '1.1rem',
+            boxShadow: '0 4px 15px rgba(76, 175, 80, 0.3)'
+          }}
+        >
+          Dice Game
+        </Button>
+        <Button
+          variant="contained"
+          size="large"
+          onClick={() => startGame('cards')}
+          sx={{
+            backgroundColor: '#4CAF50',
+            '&:hover': { backgroundColor: '#45a049' },
+            borderRadius: '25px',
+            padding: '12px 30px',
+            fontSize: '1.1rem',
+            boxShadow: '0 4px 15px rgba(76, 175, 80, 0.3)'
+          }}
+        >
+          Card Game
+        </Button>
+      </Box>
+    </MotionBox>
+  );
+
+  const renderAnimation = () => (
+    <MotionBox
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5 }}
+      sx={{
+        textAlign: 'center',
+        padding: 4
+      }}
+    >
+      <Box
+        component="img"
+        src={gameType === 'dice' ? '/dice.gif' : '/card.gif'}
+        alt="Game animation"
+        sx={{
+          width: '100%',
+          maxWidth: 400,
+          height: 'auto',
+          borderRadius: 2,
+          boxShadow: '0 8px 32px rgba(0,0,0,0.3)'
+        }}
+      />
+    </MotionBox>
+  );
+
+  const renderQuestion = () => (
+    <MotionBox
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      sx={{
+        textAlign: 'center',
+        color: 'white',
+        padding: 4,
+        maxWidth: 600,
+        margin: '0 auto'
+      }}
+    >
+      <Typography variant="h4" gutterBottom sx={{ mb: 3, fontWeight: 'bold' }}>
+        {gameType?.charAt(0).toUpperCase() + gameType?.slice(1)} Game
+      </Typography>
+      
+      <Typography variant="h6" sx={{ mb: 4, lineHeight: 1.6 }}>
+        {currentQuestion?.question}
+      </Typography>
+
+      {feedback && (
+        <Alert 
+          severity={feedback.type} 
+          sx={{ mb: 3, maxWidth: 400, margin: '0 auto 24px auto' }}
+        >
+          {feedback.message}
+        </Alert>
+      )}
+
+      <TextField
+        value={userAnswer}
+        onChange={(e) => setUserAnswer(e.target.value)}
+        onKeyPress={handleKeyPress}
+        placeholder="Enter your answer"
+        variant="outlined"
+        size="large"
+        disabled={!!feedback}
+        sx={{
+          mb: 3,
+          width: '100%',
+          maxWidth: 300,
+          '& .MuiOutlinedInput-root': {
+            backgroundColor: 'white',
+            borderRadius: '8px'
+          }
+        }}
+      />
+
+      <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>
+        <Button
+          variant="contained"
+          size="large"
+          onClick={handleSubmit}
+          disabled={!userAnswer.trim() || !!feedback}
+          sx={{
+            backgroundColor: '#4CAF50',
+            '&:hover': { backgroundColor: '#45a049' },
+            borderRadius: '20px',
+            padding: '10px 30px'
+          }}
+        >
+          Submit
+        </Button>
+        
+        <Button
+          variant="outlined"
+          size="large"
+          onClick={returnToMenu}
+          sx={{
+            borderColor: 'white',
+            color: 'white',
+            '&:hover': { 
+              borderColor: '#4CAF50',
+              backgroundColor: 'rgba(76, 175, 80, 0.1)'
+            },
+            borderRadius: '20px',
+            padding: '10px 30px'
+          }}
+        >
+          Menu
+        </Button>
+      </Box>
+    </MotionBox>
+  );
+
+  return (
+    <Box
+      sx={{
+        minHeight: '400px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: 'transparent'
+      }}
+    >
+      {gameState === 'menu' && renderMenu()}
+      {gameState === 'animation' && renderAnimation()}
+      {gameState === 'question' && renderQuestion()}
+    </Box>
+  );
 }
 
 export default QuantGame;

@@ -48,13 +48,14 @@ function TechSection() {
       <Grid container spacing={4} className={styles.techCardsContainer}>
         {techCards.map((card, index) => (
           <Grid item xs={12} sm={6} md={3} key={index}>
-            <Link href={card.link} passHref>
+            <Link href={card.link} passHref style={{ textDecoration: 'none' }}>
               <MotionCard
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
                 whileHover={{ scale: 1.05 }}
                 className={styles.techCard}
+                sx={{ cursor: 'pointer' }}
               >
                 <CardMedia
                   component="img"

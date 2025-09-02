@@ -6,20 +6,21 @@ export const experiencesData = [
       company: 'Tesla',
       duration: 'May 2025 - Aug 2025',
       responsibilities: [
-        'Full-stack development for internal tools',
-        'Working with cutting-edge automotive technology',
-        'Collaboration with engineering teams on software solutions'
+        'Engineered 3 React-based high-voltage diagnostic panels for Tesla\'s Cybercab, with intuitive UIs that translated complex telemetry into readable formats',
+        'Enabled fault detection, real-time signal visualization, and routine execution for HV battery systems',
+        'Maintained and scaled HVBCT to support 3,000 weekly battery shipments, implementing new high-voltage testing features and automation routines',
+        'Implemented UDS over Ethernet (UDP) support in Toolbox Proxy using Go, enabling diagnostic communication with next-gen battery packs'
       ]
     },
     {
-      title: 'Backend Software Engineer',
+      title: 'Software Team Lead',
       company: 'App Team Carolina',
       duration: 'Feb 2024 - Present',
       responsibilities: [
-        'Developing scalable backend APIs using Node.js and Express',
-        'Database design and optimization with PostgreSQL',
-        'Implementing authentication and security best practices',
-        'Collaborating on cross-platform mobile applications'
+        'Directed a cross-functional team of 10+ iOS and backend developers using custom Notion ticketing and Slack for coordination',
+        'Developed a Python-based path-planning algorithm leveraging OpenStreetMap GIS data and Dijkstra\'s algorithm to generate optimal campus routes',
+        'Hardened backend security for RESTful APIs by implementing HTTPS, rate limiting, input sanitization, JWT authentication, and RBAC',
+        'Created an indoor path-finding algorithm by incorporating CAD building models to support multi-floor navigation'
       ]
     },
     {
@@ -38,10 +39,10 @@ export const experiencesData = [
       company: 'Tesla',
       duration: 'Sep 2024 - Dec 2024',
       responsibilities: [
-        'Developed internal automation tools using Python and Django',
-        'Optimized manufacturing data processing pipelines',
-        'Collaborated with cross-functional teams on software requirements',
-        'Implemented testing frameworks for quality assurance'
+        'Accelerated data processing speed by 2× by converting the legacy High Voltage Battery Communication Tool (HVBCT) into a modern, socket-based React application',
+        'Streamlined diagnostic efficiency by automating key calculations and reducing technician input to a single field',
+        'Deployed HVBCT across Tesla\'s service network in collaboration with team; now publicly featured in Tesla Toolbox',
+        'Facilitated over 4,000 high-voltage battery shipments through HVBCT, which became the primary HV diagnostic tool for Tesla\'s Semi-Truck platform'
       ]
     },
     {
@@ -49,10 +50,10 @@ export const experiencesData = [
       company: 'Lenovo',
       duration: 'June 2024 - July 2024',
       responsibilities: [
-        'Analyzed market requirements for consumer technology products',
-        'Collaborated with engineering teams on product roadmaps',
-        'Conducted competitive analysis and feature prioritization',
-        'Supported product launch strategies and go-to-market planning'
+        'Led a cross-functional team of 8+ developers and designers to conceptualize a centralized developer portal for Lenovo\'s cloud software division',
+        'Used Figma to prototype user flows and improve access to internal tools and documentation',
+        'Created an AI-powered chatbot using Python and Docker to retrieve Lenovo-specific documentation and business intelligence',
+        'Enabled engineers to query technical resources via natural language, reducing time spent on manual search'
       ]
     },
     {
